@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate Cup | FIFA World Cup™ Official Trophy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold:#d49b19;
+      --gold2:#e6b43e;
+      --black:#040404;
+      --text:#101010;
+      --muted:#6b6b6b;
+      --line:#e9e3da;
+      --soft:#fbfaf7;
+      --white:#fff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, Arial, sans-serif; color: var(--text); background: #fff; }
+    img { display:block; max-width:100%; height:auto; }
+    a { text-decoration:none; color:inherit; }
+    .topbar {
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5vw;
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .brand { display:flex; align-items:center; gap:16px; font-weight:900; letter-spacing:.04em; }
+    .logo {
+      width:48px; height:48px; border-radius:7px; background:#000; color:#fff;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      font-size:10px; line-height:1.05; font-weight:900;
+    }
+    .nav-cta { display:flex; align-items:center; gap:22px; font-size:15px; font-weight:900; }
+    .nav-cta s { color:#888; font-weight:600; margin-left:7px; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      border:none; cursor:pointer; border-radius:5px;
+      font-weight:900; text-transform:uppercase; letter-spacing:.02em;
+      transition:.18s ease;
+    }
+    .btn:hover { transform:translateY(-1px); filter:brightness(1.04); }
+    .btn-gold { background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#fff; box-shadow:0 10px 24px rgba(212,155,25,.22); }
+    .btn-black { background:#000; color:#fff; }
+    .btn-outline { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.65); }
+    .btn-sm { padding:14px 40px; font-size:13px; }
+    .btn-lg { width:100%; padding:18px 24px; font-size:14px; }
+
+    .hero {
+      min-height:590px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:5vw;
+      padding:54px 5vw 42px;
+      align-items:center;
+      background:radial-gradient(circle at 74% 45%, #f5f0e5 0, #fff 39%, #fbfaf7 100%);
+      border-bottom:1px solid var(--line);
+    }
+    .pill {
+      display:inline-flex; align-items:center; gap:9px;
+      padding:10px 15px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+    .pill::before { content:""; width:10px; height:10px; background:var(--gold); border-radius:50%; }
+    h1 {
+      font-family:"Bebas Neue", Impact, sans-serif;
+      font-size:clamp(58px,7.6vw,104px);
+      line-height:.88;
+      letter-spacing:.015em;
+      margin-bottom:28px;
+    }
+    h1 span { color:var(--gold); display:block; }
+    .hero-copy {
+      max-width:520px;
+      font-size:18px;
+      line-height:1.7;
+      color:#333;
+      margin-bottom:26px;
+    }
+    .price { display:flex; align-items:center; gap:16px; margin-bottom:8px; }
+    .price strong { font-size:34px; font-weight:900; }
+    .save {
+      background:#f00;
+      color:#fff;
+      padding:9px 13px;
+      border-radius:6px;
+      font-size:13px;
+      font-weight:900;
+    }
+    .was { font-size:14px; color:#555; margin-bottom:24px; }
+    .actions { max-width:455px; display:grid; gap:12px; }
+    .trust-inline {
+      display:flex; flex-wrap:wrap; gap:24px;
+      margin-top:20px;
+      font-size:13px;
+      font-weight:700;
+      color:#2c2c2c;
+    }
+    .hero-visual { display:flex; justify-content:center; align-items:center; }
+    .hero-visual img {
+      width:min(520px,100%);
+      max-height:560px;
+      object-fit:contain;
+      filter:drop-shadow(0 26px 50px rgba(0,0,0,.16));
+    }
+
+    .trustbar {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      padding:0 5vw;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .trustitem {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:28px 24px;
+      border-right:1px solid var(--line);
+    }
+    .trustitem:last-child { border-right:none; }
+    .icon {
+      width:54px; height:54px; border-radius:50%;
+      border:1px solid var(--line);
+      background:#fffaf0;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--gold);
+      font-size:25px;
+      flex:0 0 auto;
+    }
+    .trustitem b { display:block; font-size:13px; text-transform:uppercase; margin-bottom:6px; }
+    .trustitem span { color:var(--muted); font-size:13px; }
+
+    .product {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:5vw;
+      padding:54px 5vw 34px;
+      align-items:start;
+    }
+    .main-img {
+      border-radius:4px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#f9f8f4;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      min-height:360px;
+    }
+
+    .main-img img {
+      width:auto;
+      max-width:100%;
+      max-height:560px;
+      height:auto;
+      object-fit:contain;
+    }
+    .thumbs {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:16px;
+    }
+    .thumb {
+      aspect-ratio:1.18/1;
+      object-fit:contain;
+      border-radius:4px;
+      border:1px solid var(--line);
+      cursor:pointer;
+      background:#f9f8f4;
+      padding:6px;
+    }
+    .thumb.active { border:4px solid var(--gold); }
+    .thumb.contain { object-fit:contain; padding:7px; background:#477044; }
+    .kicker { color:var(--gold); text-transform:uppercase; font-size:13px; font-weight:900; margin-bottom:12px; }
+    h2 { font-size:31px; line-height:1.16; margin-bottom:13px; }
+    .subtitle { font-size:15px; color:#111; margin-bottom:22px; }
+    .copy { font-size:16px; line-height:1.65; color:#333; margin-bottom:20px; }
+    .checks { display:grid; gap:14px; margin:22px 0 28px; }
+    .checks li { list-style:none; display:flex; gap:12px; align-items:flex-start; font-size:15px; color:#333; }
+    .checks li::before {
+      content:"✓";
+      width:20px; height:20px; border-radius:50%;
+      background:var(--gold);
+      color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 auto;
+      font-size:12px;
+      font-weight:900;
+    }
+    .specrow {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      border-top:1px solid var(--line);
+      padding-top:26px;
+    }
+    .spec { display:flex; align-items:center; gap:16px; font-size:13px; font-weight:900; text-transform:uppercase; }
+    .spec strong { display:block; }
+    .spec small { display:block; font-size:13px; color:#555; margin-top:4px; }
+
+    .lifestyle {
+      display:grid;
+      grid-template-columns:1.05fr 1fr 1fr;
+      gap:16px;
+      padding:14px 5vw 20px;
+    }
+    .lifestyle img {
+      width:100%;
+      height:auto;
+      max-height:460px;
+      object-fit:contain;
+      background:#f9f8f4;
+      padding:10px;
+      border-radius:8px;
+    }
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      padding:0 5vw 54px;
+    }
+    .card {
+      border-radius:5px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .card img {
+      width:100%;
+      aspect-ratio:1.5/1;
+      object-fit:contain;
+      background:#f9f8f4;
+      padding:10px;
+    }
+    .card img.contain { object-fit:contain; padding:10px; }
+    .card h3 {
+      margin-top:9px;
+      font-size:13px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    .card p { font-size:12px; color:#444; line-height:1.35; }
+
+    .final {
+      position:relative;
+      overflow:hidden;
+      padding:70px 5vw;
+      text-align:center;
+      background:#070707;
+      color:#fff;
+    }
+    .final::before,.final::after {
+      content:"";
+      position:absolute;
+      width:420px; height:420px;
+      top:-150px;
+      background:radial-gradient(circle, rgba(212,155,25,.38), transparent 63%);
+    }
+    .final::before { left:-160px; }
+    .final::after { right:-160px; }
+    .final > * { position:relative; z-index:1; }
+    .final h2 {
+      font-family:"Bebas Neue", Impact, sans-serif;
+      font-size:48px;
+      letter-spacing:.03em;
+      margin-bottom:10px;
+    }
+    .final p { color:rgba(255,255,255,.75); margin-bottom:26px; }
+    .final-actions { max-width:550px; margin:0 auto; display:grid; gap:12px; }
+    .final-trust {
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      flex-wrap:wrap;
+      font-size:13px;
+      color:rgba(255,255,255,.82);
+    }
+    footer {
+      padding:24px 5vw;
+      color:#777;
+      text-align:center;
+      font-size:12px;
+      border-top:1px solid var(--line);
+    }
+
+    @media(max-width:980px) {
+      .hero,.product { grid-template-columns:1fr; }
+      .hero-visual { order:-1; }
+      .trustbar { grid-template-columns:1fr 1fr; }
+      .trustitem:nth-child(2) { border-right:none; }
+      .lifestyle { grid-template-columns:1fr; }
+      .cards { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:560px) {
+      .topbar { height:auto; padding:12px 18px; }
+      .brand span { font-size:13px; }
+      .price-top { display:none; }
+      .btn-sm { padding:12px 17px; }
+      .hero,.product { padding-left:22px; padding-right:22px; }
+      h1 { font-size:62px; }
+      .trustbar { grid-template-columns:1fr; padding:0; }
+      .trustitem { border-right:none; border-bottom:1px solid var(--line); padding-left:22px; }
+      .thumbs { grid-template-columns:repeat(2,1fr); }
+      .specrow,.cards { grid-template-columns:1fr; }
+      .lifestyle { padding-left:22px; padding-right:22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <div class="logo">ULTIMATE<br>CUP</div>
+      <span>ULTIMATE CUP</span>
+    </a>
+    <div class="nav-cta">
+      <span class="price-top">AUD $99.00 <s>AUD $149.00</s></span>
+      <a class="btn btn-gold btn-sm" href="https://buy.stripe.com/cNifZh4Ew8ak1to7D5bo401">Buy Now – Save 33%</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="pill">Official LEGO® Set</div>
+        <h1>FIFA World Cup™ <span>Official Trophy</span></h1>
+        <p class="hero-copy">Build and display the most iconic symbol in football with this stunning 2,842-piece collector edition. Designed for football fans, collectors and World Cup enthusiasts.</p>
+        <div class="price">
+          <strong>AUD $99.00</strong>
+          <span class="save">SAVE 33%</span>
+        </div>
+        <div class="was">Was <s>AUD $149.00</s></div>
+        <div class="actions">
+          <a class="btn btn-gold btn-lg" href="https://buy.stripe.com/cNifZh4Ew8ak1to7D5bo401">Buy Now – Save 33%</a>
+          <a class="btn btn-black btn-lg" href="https://buy.stripe.com/cNifZh4Ew8ak1to7D5bo401">Buy Now with Apple Pay</a>
+        </div>
+        <div class="trust-inline">
+          <span>🔒 Secure Checkout</span>
+          <span>🚚 12–15 Day Tracked Shipping</span>
+          <span>↻ 30-Day Money Back</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="trophy_detail.png.png" alt="FIFA World Cup trophy LEGO replica">
+      </div>
+    </section>
+
+    <section class="trustbar">
+      <div class="trustitem"><div class="icon">🔒</div><div><b>Secure Payment</b><span>100% secure checkout</span></div></div>
+      <div class="trustitem"><div class="icon">🚚</div><div><b>Worldwide Shipping</b><span>12–15 day tracked delivery</span></div></div>
+      <div class="trustitem"><div class="icon">📦</div><div><b>30-Day Returns</b><span>Hassle-free returns</span></div></div>
+      <div class="trustitem"><div class="icon">⭐</div><div><b>Premium Quality</b><span>Official LEGO® set</span></div></div>
+    </section>
+
+    <section class="product" id="product">
+      <div>
+        <div class="main-img">
+          <img id="mainImage" src="person_holding.jpg.png" alt="Person holding FIFA World Cup trophy LEGO set">
+        </div>
+        <div class="thumbs">
+          <img class="thumb active" src="person_holding.jpg.png" onclick="setMain(this)">
+          <img class="thumb" src="desk_display.jpg.png" onclick="setMain(this)">
+          <img class="thumb" src="building.jpg.png" onclick="setMain(this)">
+          <img class="thumb" src="trophy_detail.png.png" onclick="setMain(this)">
+        </div>
+      </div>
+
+      <div>
+        <div class="kicker">LEGO® Icons</div>
+        <h2>FIFA World Cup™ Official Trophy</h2>
+        <div class="subtitle">LEGO® Set #43020 &nbsp; | &nbsp; 2,842 Pieces</div>
+        <p class="copy">Recreate the most prestigious trophy in football with incredible detail. A rewarding build for fans and a stunning display piece for any space.</p>
+        <ul class="checks">
+          <li>Authentic details and realistic proportions</li>
+          <li>Sturdy display base with “FIFA World Cup™” plaque</li>
+          <li>2,842 pieces for an immersive building experience</li>
+          <li>Perfect for display at home or in the office</li>
+          <li>A must-have for football and LEGO® fans</li>
+        </ul>
+        <div class="specrow">
+          <div class="spec">🎁 <div><strong>Ages</strong><small>18+</small></div></div>
+          <div class="spec">🧩 <div><strong>Pieces</strong><small>2,842</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lifestyle">
+      <img src="person_holding.jpg.png" alt="Collector holding trophy">
+      <img src="desk_display.jpg.png" alt="Trophy displayed on desk">
+      <img src="building.jpg.png" alt="Trophy being assembled">
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <img class="contain" src="box_product.webp.png" alt="Product box and trophy">
+        <h3>Collector's Display Piece</h3>
+        <p>A stunning centrepiece for any fan’s collection.</p>
+      </div>
+      <div class="card">
+        <img class="contain" src="trophy_detail.png.png" alt="Trophy detail">
+        <h3>Authentic Detail</h3>
+        <p>Meticulously designed to capture every detail.</p>
+      </div>
+      <div class="card">
+        <img class="contain" src="person_holding.jpg.png" alt="Exclusive minifigure">
+        <h3>Collector Build</h3>
+        <p>A premium building experience for football fans and collectors.</p>
+      </div>
+      <div class="card">
+        <img src="trophy_detail.png.png" alt="Official plaque">
+        <h3>Official Plaque</h3>
+        <p>Features the iconic FIFA World Cup™ name.</p>
+      </div>
+    </section>
+
+    <section class="final">
+      <h2>Bring Home Football History</h2>
+      <p>Limited stock available. Get yours now and celebrate the world’s game.</p>
+      <div class="final-actions">
+        <a class="btn btn-gold btn-lg" href="https://buy.stripe.com/cNifZh4Ew8ak1to7D5bo401">Buy Now – Save 33%</a>
+        <a class="btn btn-outline btn-lg" href="https://buy.stripe.com/cNifZh4Ew8ak1to7D5bo401">Buy Now with Apple Pay</a>
+      </div>
+      <div class="final-trust">
+        <span>🔒 Secure Checkout</span>
+        <span>🚚 12–15 Day Tracked Shipping</span>
+        <span>↻ 30-Day Money Back</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This website is an independent promotional page. LEGO® and FIFA World Cup™ are trademarks of their respective owners.
+  </footer>
+
+  <script>
+    function setMain(el) {
+      document.getElementById('mainImage').src = el.src;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>
